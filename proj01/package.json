@@ -1,0 +1,24 @@
+{
+    "name": "testProj",
+    "version": "0.0.1",
+    "description": "",
+    "main": "index.js",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "cookie-parser": "^1.4.3",
+        "body-parser": "latest",
+        "compression": "latest",
+        "cross-env": "^5.0.0",
+        "express": "^4.15.2",
+        "express-session": "^1.15.2",
+        "express-winston": "^2.3.0",
+        "moment": "^2.18.1",
+        "path": "latest",
+        "ejs": "latest"
+    },
+    "devDependencies": {}
+}
