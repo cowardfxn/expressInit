@@ -4,7 +4,8 @@ const express = require("express"),
     bodyParser = require("body-parser"),
     ejs = require("ejs"),
     session = require("express-session"),
-    compression = require("compression");
+    compression = require("compression"),
+    moment = require("moment");
 
 const app = express(),
     env = process.env,
@@ -24,8 +25,6 @@ app.use(session({
     // })
 }));
 
-console.log(app.env);
-
 // html engine setup
 app.set("views", path.join(__dirname, "htmls"));
 app.engine("html", ejs.__express);
@@ -37,8 +36,12 @@ app.use(express.static(path.join(__dirname, "public")));
 
 let router = express.Router();
 router.get("/", function (req, res, next) {
-    let timeStr = new Date().toString();
+    let timeStr = moment(new Date()).format("YYYY/MM/DD HH:mm:ss");
     res.render("./main.html", {timeStr: timeStr});
+});
+
+router.get("/countDown", function (req, res, next) {
+    res.render("./countDown.html");
 });
 
 app.use(router);

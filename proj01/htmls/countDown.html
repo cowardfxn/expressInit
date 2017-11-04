@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<header>
+    <meta charset="utf-8">
+    <title>倒计时</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <script src="plugins/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="plugins/bootstrap.min.js" type="text/javascript"></script>
+</header>
+
+<body>
+<div class="col-md-12">&nbsp;</div>
+<div id="audios" style="display:none">
+    <audio controls="controls" loop preload='auto'>
+        <source src="audio/banana.mp3" type="audio/mp3"/>
+        <source src="audio/alarm.mp3" type="audio/ogg"/>
+        <embed height="100" width="100" src="song.mp3"/>
+    </audio>
+</div>
+<span class="col-xs-1"></span>
+<div>
+    <label>输入倒计时分钟数：
+        <input id="totalMins" onblur="checkInput(this)" min=1 type="number"/>
+    </label>
+    <button class="btn btn-default" id="begin" onclick="begin()">
+        <span id="iconSpan" class="glyphicon glyphicon-play" aria-hidden='true'></span>
+    </button>
+    <button class="btn btn-default" id="reset" onclick="reset()" style="display:none">
+        <span class="glyphicon glyphicon-stop" aria-hidden='true'></span>
+    </button>
+</div>
+<div id="main"></div>
+</body>
+<footer>
+    <script src="plugins/echarts.min.js" type="text/javascript"></script>
+    <script src="plugins/audioplayer.js" type="text/javascript"></script>
+    <script src="js/countDown.js" type="text/javascript"></script>
+</footer>
+</html>
