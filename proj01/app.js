@@ -32,8 +32,8 @@ app.set("view engine", "html");
 // static resources location
 app.use(express.static(path.join(__dirname, "public")));
 
-// router(app);
 
+// router setup
 let router = express.Router();
 router.get("/", function (req, res, next) {
     let timeStr = moment(new Date()).format("YYYY/MM/DD HH:mm:ss");
@@ -42,6 +42,10 @@ router.get("/", function (req, res, next) {
 
 router.get("/countDown", function (req, res, next) {
     res.render("./countDown.html");
+});
+
+router.get("/nestedPage", function (req, res, next) {
+    res.render("./nestedPage.html");
 });
 
 app.use(router);
