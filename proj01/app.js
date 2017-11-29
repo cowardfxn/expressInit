@@ -5,6 +5,7 @@ const express = require("express"),
     ejs = require("ejs"),
     session = require("express-session"),
     compression = require("compression"),
+    morgan = require("morgan"),
     moment = require("moment");
 
 const app = express(),
@@ -14,7 +15,7 @@ const app = express(),
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false, parameterLimit: 10000}));
+app.use(bodyParser.urlencoded({ extended: false, parameterLimit: 10000 }));
 app.use(session({
     secret: env.secret || 8080,
     resave: true,
@@ -25,6 +26,16 @@ app.use(session({
     // })
 }));
 
+// morgan configuration
+// immediate whether print after completion
+app.use(morgan("[:date[iso]] :method :url -- HTTP/:http-version :status in :response-time ms", {
+    immediate: false,
+    skip: function(req, res) {
+        // return res.statusCode < 400
+        return true;
+    }
+}));
+
 // html engine setup
 app.set("views", path.join(__dirname, "htmls"));
 app.engine("html", ejs.__express);
@@ -32,20 +43,25 @@ app.set("view engine", "html");
 // static resources location
 app.use(express.static(path.join(__dirname, "public")));
 
-
 // router setup
 let router = express.Router();
-router.get("/", function (req, res, next) {
+router.get("/", function(req, res, next) {
     let timeStr = moment(new Date()).format("YYYY/MM/DD HH:mm:ss");
-    res.render("./main.html", {timeStr: timeStr});
+    res.render("./main.html", { timeStr: timeStr });
 });
 
-router.get("/countDown", function (req, res, next) {
+router.get("/countDown", function(req, res, next) {
+    console.log("1233452354");
     res.render("./countDown.html");
 });
 
-router.get("/nestedPage", function (req, res, next) {
+router.get("/nestedPage", function(req, res, next) {
+    console.log("456777777");
     res.render("./nestedPage.html");
+});
+
+router.get("/panoramic", (req, res, next) => {
+    res.render("./panoramic/index.html");
 });
 
 app.use(router);
@@ -59,7 +75,6 @@ app.use(router);
 
 // app.use(history());
 
-app.listen(port, function () {
+app.listen(port, function() {
     console.log("Server running on", "loalhost:" + port);
 });
-

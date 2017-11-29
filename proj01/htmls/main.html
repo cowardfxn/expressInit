@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Project 001--anything</title>
@@ -8,26 +9,37 @@
     <link href="css/main.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
-<% include ./include/header.html %>
+    <% include ./include/header.html %>
 
-<div class="col-lg-12"></div>
-<div class="col-md-12">
-    <label class="plain">Hello, it is <%=timeStr%> now.</label>
-    <div id="sample" class="sampleBlock"></div>
-</div>
-<br/>
-<div class="col-md-6">
-    <!--<button id="bolden" class="btn btn-default" type="button" onclick="showBold()">Change font</button>-->
-    <!--<button id="restore" class="btn btn-default" type="button" onclick="restoreFont()" style="display:none">Restore-->
-    <!--</button>-->
-    <button class="btn btn-default" type="button" onclick="changeColor()">Change color</button>
-    <button class="btn btn-default" type="button" onclick="clearStyle()">Clear</button>
-</div>
+        <div class="col-lg-12"></div>
+        <div class="col-md-12">
+            <label class="plain">Hello, it is <%=timeStr%> now.</label>
+            <div id="sample" class="sampleBlock"></div>
+        </div>
+        <br/>
+        <div class="col-md-6">
+            <!--<button id="bolden" class="btn btn-default" type="button" onclick="showBold()">Change font</button>-->
+            <!--<button id="restore" class="btn btn-default" type="button" onclick="restoreFont()" style="display:none">Restore-->
+            <!--</button>-->
+            <button class="btn btn-default" type="button" onclick="changeColor()">Change color</button>
+            <button class="btn btn-default" type="button" onclick="clearStyle()">Clear</button>
+        </div>
 
-<div class="col-lg-7">
-    <a href="/countDown" target="_blank">倒计时</a>
-    <a href="/nestedPage" target="_blank">页面嵌套</a>
-</div>
+        <div class="col-lg-7">
+            <a href="/countDown" target="_blank">倒计时</a>
+            <a href="/nestedPage" target="_blank">页面嵌套</a>
+        </div>
+
+        <div class="col-lg-10">
+            <form method="POST" action="/uploadLargeFile">
+                <label><input type="file" name="panoramicSrcPic" placeholder="上传全景图片"/></label>
+                <button type="submit">上传</button>
+            </form>
+
+            <a href="/panoramic" target="_blank">示例图片</a>
+        </div>
 </body>
+
 </html>
